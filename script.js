@@ -1,109 +1,79 @@
-const screens = {
-loading: document.getElementById("loading"),
-story: document.getElementById("story"),
-cake: document.getElementById("cake"),
-final: document.getElementById("final")
-};
+const startBtn = document.getElementById("startBtn");
 
-function showScreen(name){
-Object.values(screens).forEach(s => s.classList.remove("active"));
-screens[name].classList.add("active");
+startBtn.onclick = function () {
+
+const loadingScreen = document.getElementById("loadingScreen");  
+
+loadingScreen.style.transition = "opacity 1.5s";  
+loadingScreen.style.opacity = "0";  
+
+setTimeout(() => {  
+
+    loadingScreen.innerHTML = `  
+    <div class="storyPage">  
+
+        <h1>Hello Geet ❤️</h1>  
+
+        <p id="story"></p>  
+
+        <button id="nextBtn" style="display:none;">  
+            Continue ✨  
+        </button>  
+
+    </div>  
+    `;  
+
+    loadingScreen.style.opacity = "1";  
+
+    const message =  
+    "Some people become family not because of blood... but because of the place they earn in our hearts.";  
+
+    let i = 0;  
+
+    const story = document.getElementById("story");  
+
+    const interval = setInterval(() => {  
+
+        story.innerHTML += message[i];  
+
+        i++;  
+
+        if(i >= message.length){  
+
+            clearInterval(interval);  
+
+            document.getElementById("nextBtn").style.display = "inline-block";  
+
+        }  
+
+    },40);  
+
+    document.getElementById("nextBtn").onclick = birthdayRoom;  
+
+},1500);
+
 }
+function birthdayRoom(){
 
-/* ========== START ========== */
+document.body.innerHTML = `
 
-document.getElementById("startBtn").onclick = () => {
-showScreen("story");
-startStory();
-};
+<div class="birthdayRoom">  <div class="balloons">  
+    <div class="balloon b1"></div>  
+    <div class="balloon b2"></div>  
+    <div class="balloon b3"></div>  
+    <div class="balloon b4"></div>  
+    <div class="balloon b5"></div>  
+</div>  <h1>🎂 Happy Birthday Geet ❤️</h1>  <p>Your magical birthday journey has begun.</p>  <div class="cake">  <div class="plate"></div>  <div class="cake-base"></div>  <div class="cake-middle"></div>  <div class="cake-top"></div>  <div class="icing"></div>  <div class="drip drip1"></div>  
+<div class="drip drip2"></div>  
+<div class="drip drip3"></div>  <div class="candle">  
+<div class="flame"></div>  
+</div>  </div>  <button id="cakeBtn">  
+💨 Blow Candle  
+</button>  </div>  
+`;  document.getElementById("cakeBtn").onclick = function(){
 
-/* ========== TYPEWRITER ========== */
-
-function startStory(){
-
-const text = "Some people become family not because of blood... but because of the place they earn in our hearts.";
-
-let i = 0;
-const el = document.getElementById("storyText");
-
-el.textContent = "";
-
-const timer = setInterval(() => {
-
-el.textContent += text[i];
-i++;
-
-if(i >= text.length){
-clearInterval(timer);
-document.getElementById("storyNext").classList.remove("hidden");
-}
-
-},40);
-
-document.getElementById("storyNext").onclick = () => {
-showScreen("cake");
-};
-}
-
-/* ========== CAKE INTERACTION ========== */
-
-document.getElementById("blowBtn").onclick = () => {
-
-document.getElementById("flame").style.opacity = "0";
-
-startFireworks();
-
-setTimeout(() => {
-showScreen("final");
-},2000);
-
-};
-
-/* ========== FIREWORKS (CANVAS) ========== */
-
-const canvas = document.getElementById("fireworks");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let particles = [];
-
-function startFireworks(){
-
-for(let i=0;i<80;i++){
-
-particles.push({
-x:canvas.width/2,
-y:canvas.height/2,
-vx:(Math.random()-0.5)*6,
-vy:(Math.random()-0.5)*6,
-alpha:1
-});
+alert("🎆 Fireworks Coming Soon!");
 
 }
 
-animate();
-}
-
-function animate(){
-
-ctx.clearRect(0,0,canvas.width,canvas.height);
-
-particles.forEach(p => {
-
-p.x += p.vx;
-p.y += p.vy;
-p.alpha -= 0.01;
-
-ctx.fillStyle = `rgba(255,100,200,${p.alpha})`;
-ctx.fillRect(p.x,p.y,3,3);
-
-});
-
-particles = particles.filter(p => p.alpha > 0);
-
-if(particles.length > 0){
-requestAnimationFrame(animate);
-}
 }
