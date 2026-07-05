@@ -10,25 +10,14 @@ startBtn.addEventListener("click", () => {
     setTimeout(() => {
 
         loadingScreen.innerHTML = `
-
         <section id="story">
-
             <div class="storyBox">
-
                 <h3>Hello Geet ❤️</h3>
-
                 <h1>Welcome to Your Universe</h1>
-
                 <p id="storyText"></p>
-
-                <button id="nextStory">
-                    Continue ✨
-                </button>
-
+                <button id="nextStory">Continue ✨</button>
             </div>
-
         </section>
-
         `;
 
         startStory();
@@ -39,103 +28,91 @@ startBtn.addEventListener("click", () => {
 
 function startStory(){
 
-const lines=[
+    const lines = [
+        "Some people come into our lives for a reason...",
+        "Some become unforgettable...",
+        "Even though miles separate us...",
+        "Today, every star in this universe shines for you...",
+        "Happy 14th Birthday, Geet ❤️"
+    ];
 
-"Some people come into our lives for a reason...",
+    let index = 0;
 
-"Some become unforgettable...",
+    const text = document.getElementById("storyText");
+    const btn = document.getElementById("nextStory");
 
-"Even though miles separate us...",
+    text.innerHTML = lines[index];
 
-"Today, every star in this universe shines for you...",
+    btn.onclick = () => {
 
-"Happy 14th Birthday, Geet ❤️"
+        index++;
 
-];
+        if(index < lines.length){
 
-let index=0;
+            text.innerHTML = lines[index];
 
-const text=document.getElementById("storyText");
-const btn=document.getElementById("nextStory");
+        }else{
 
-text.innerHTML=lines[index];
+            showBirthdayRoom();
 
-btn.onclick=()=>{
+        }
 
-index++;
+    };
 
-if(index<lines.length){
+}
 
-text.innerHTML=lines[index];
+function showBirthdayRoom(){
 
-}else{
+    document.body.innerHTML = `
+    <section id="birthdayRoom">
 
-showBirthdayRoom();");
-function showBirthdayRoom() {
+        <div class="room">
 
-document.body.innerHTML = `
+            <h1>🎉 Happy 14th Birthday Geet ❤️</h1>
 
-<section id="birthdayRoom">
+            <p>
+                Today isn't just another day...
+                <br>
+                It's your special universe.
+            </p>
 
-<div class="room">
+            <div class="cake">
 
-<h1>🎉 Happy 14th Birthday Geet ❤️</h1>
+                <div class="plate"></div>
 
-<p>
-Today isn't just another day...
-<br>
-It's your special universe.
-</p>
+                <div class="layer layer1"></div>
+                <div class="layer layer2"></div>
+                <div class="layer layer3"></div>
 
-<div class="cake">
+                <div class="candle">
+                    <div class="flame" id="flame"></div>
+                </div>
 
-<div class="plate"></div>
+            </div>
 
-<div class="layer layer1"></div>
+            <button id="blowBtn">
+                💨 Blow Candle
+            </button>
 
-<div class="layer layer2"></div>
+        </div>
 
-<div class="layer layer3"></div>
+    </section>
+    `;
 
-<div class="candle">
-
-<div class="flame" id="flame"></div>
-
-</div>
-
-</div>
-
-<button id="blowBtn">
-💨 Blow Candle
-</button>
-
-</div>
-
-</section>
-
-`;
-
-document
-.getElementById("blowBtn")
-.onclick = blowCandle;
+    document
+        .getElementById("blowBtn")
+        .onclick = blowCandle;
 
 }
 
 function blowCandle(){
 
-document
-.getElementById("flame")
-.style.opacity="0";
+    document.getElementById("flame").style.opacity = "0";
 
-setTimeout(()=>{
+    setTimeout(()=>{
 
-alert("🎆 Fireworks Coming Next!");
+        alert("🎆 Fireworks Coming Next!");
 
-},700);
+    },700);
 
-    }
-}
-
-}
-
-          }
+} 
