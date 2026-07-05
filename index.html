@@ -1,98 +1,67 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>A Universe For Geet ❤️</title>
 
-<link rel="stylesheet" href="style.css"/>
+<link rel="stylesheet" href="style.css">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
 
-<meta name="theme-color" content="#02040d">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Great+Vibes&display=swap"
+rel="stylesheet">
+
 </head>
 
 <body>
 
-<div id="app">
+<div id="loadingScreen">
 
-<!-- ================= LOADING ================= -->
-<section id="loading" class="screen active">
+<div class="moonGlow"></div>
 
-    <div class="moon"></div>
-    <div class="stars"></div>
-    <div class="shooting"></div>
+<div class="stars"></div>
 
-    <div class="center">
-        <h3>Some gifts are written in stars...</h3>
+<div class="shootingStar"></div>
 
-        <h1>This one <span>is for Geet ❤️</span></h1>
+<div class="content">
 
-        <p>Created with care</p>
+<h3 class="smallText">
+Some gifts are wrapped in paper...
+</h3>
 
-        <button id="startBtn">✨ Begin Journey</button>
-    </div>
+<h1 class="mainTitle">
+This one
+<span>was wrapped in stars.</span>
+</h1>
 
-</section>
+<p class="subtitle">
+Made especially for
+<strong>Geet ❤️</strong>
 
-<!-- ================= STORY ================= -->
-<section id="story" class="screen">
+<br><br>
 
-    <div class="storyBox">
-        <h2>Hello Geet ❤️</h2>
+by Aman 
+</p>
 
-        <p id="storyText"></p>
+<button id="startBtn">
+✨ Begin Journey ✨
+</button>
 
-        <button id="storyNext" class="hidden">Continue ✨</button>
-    </div>
-
-</section>
-
-<!-- ================= CAKE ================= -->
-<section id="cake" class="screen">
-
-    <h1>🎂 Happy Birthday Geet ❤️</h1>
-
-    <div class="cake">
-
-        <div class="plate"></div>
-        <div class="base"></div>
-        <div class="middle"></div>
-        <div class="top"></div>
-
-        <div class="candle">
-            <div class="flame" id="flame"></div>
-        </div>
-
-    </div>
-
-    <button id="blowBtn">💨 Blow Candle</button>
-
-    <canvas id="fireworks"></canvas>
-
-</section>
-
-<!-- ================= FINAL ================= -->
-<section id="final" class="screen">
-
-    <div class="finalBox">
-        <h1>💖 Happy Birthday 💖</h1>
-
-        <p>
-            You are someone who turned ordinary moments into something unforgettable.
-        </p>
-
-        <h3>— Made with ❤️</h3>
-    </div>
-
-</section>
+</div>
 
 </div>
 
 <script src="script.js"></script>
+
 </body>
-</html>
+  </html>
