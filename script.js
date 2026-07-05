@@ -1,188 +1,109 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+const screens = {
+loading: document.getElementById("loading"),
+story: document.getElementById("story"),
+cake: document.getElementById("cake"),
+final: document.getElementById("final")
+};
+
+function showScreen(name){
+Object.values(screens).forEach(s => s.classList.remove("active"));
+screens[name].classList.add("active");
 }
 
-body{
-font-family:Poppins;
-background:#02040d;
-overflow:hidden;
+/* ========== START ========== */
+
+document.getElementById("startBtn").onclick = () => {
+showScreen("story");
+startStory();
+};
+
+/* ========== TYPEWRITER ========== */
+
+function startStory(){
+
+const text = "Some people become family not because of blood... but because of the place they earn in our hearts.";
+
+let i = 0;
+const el = document.getElementById("storyText");
+
+el.textContent = "";
+
+const timer = setInterval(() => {
+
+el.textContent += text[i];
+i++;
+
+if(i >= text.length){
+clearInterval(timer);
+document.getElementById("storyNext").classList.remove("hidden");
 }
 
-/* ========== SCREEN SYSTEM ========== */
+},40);
 
-.screen{
-position:absolute;
-inset:0;
-display:none;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-text-align:center;
-color:white;
+document.getElementById("storyNext").onclick = () => {
+showScreen("cake");
+};
 }
 
-.screen.active{
-display:flex;
-animation:fadeIn 1s ease;
+/* ========== CAKE INTERACTION ========== */
+
+document.getElementById("blowBtn").onclick = () => {
+
+document.getElementById("flame").style.opacity = "0";
+
+startFireworks();
+
+setTimeout(() => {
+showScreen("final");
+},2000);
+
+};
+
+/* ========== FIREWORKS (CANVAS) ========== */
+
+const canvas = document.getElementById("fireworks");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+function startFireworks(){
+
+for(let i=0;i<80;i++){
+
+particles.push({
+x:canvas.width/2,
+y:canvas.height/2,
+vx:(Math.random()-0.5)*6,
+vy:(Math.random()-0.5)*6,
+alpha:1
+});
+
 }
 
-@keyframes fadeIn{
-from{opacity:0; transform:scale(1.05);}
-to{opacity:1; transform:scale(1);}
+animate();
 }
 
-/* ========== LOADING ========== */
+function animate(){
 
-#loading{
-background:radial-gradient(circle,#16214d,#050712,#000);
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+particles.forEach(p => {
+
+p.x += p.vx;
+p.y += p.vy;
+p.alpha -= 0.01;
+
+ctx.fillStyle = `rgba(255,100,200,${p.alpha})`;
+ctx.fillRect(p.x,p.y,3,3);
+
+});
+
+particles = particles.filter(p => p.alpha > 0);
+
+if(particles.length > 0){
+requestAnimationFrame(animate);
 }
-
-.moon{
-position:absolute;
-top:-120px;
-right:-100px;
-width:300px;
-height:300px;
-border-radius:50%;
-background:radial-gradient(circle,#fff,#8aa4ff33,transparent);
-filter:blur(10px);
-animation:float 6s infinite;
-}
-
-@keyframes float{
-50%{transform:translateY(20px);}
-}
-
-.stars{
-position:absolute;
-inset:0;
-background-image:radial-gradient(#fff 1px,transparent 1px);
-background-size:80px 80px;
-opacity:.6;
-}
-
-.shooting{
-position:absolute;
-width:200px;
-height:2px;
-background:linear-gradient(90deg,#fff,transparent);
-transform:rotate(-20deg);
-animation:shoot 5s infinite;
-top:100px;
-left:-200px;
-}
-
-@keyframes shoot{
-100%{left:120%; top:400px;}
-}
-
-/* ========== CENTER TEXT ========== */
-
-.center h1{
-font-size:48px;
-}
-
-.center span{
-display:block;
-font-family:Great Vibes;
-font-size:60px;
-color:#ff4fa0;
-}
-
-button{
-margin-top:25px;
-padding:14px 32px;
-border:none;
-border-radius:40px;
-cursor:pointer;
-font-size:18px;
-background:linear-gradient(45deg,#8b5cf6,#ff4fa0);
-color:white;
-}
-
-/* ========== STORY ========== */
-
-.storyBox{
-max-width:600px;
-padding:30px;
-background:rgba(255,255,255,0.08);
-border-radius:20px;
-}
-
-#storyText{
-margin:20px 0;
-font-size:20px;
-min-height:80px;
-}
-
-/* ========== CAKE ========== */
-
-.cake{
-position:relative;
-width:220px;
-height:220px;
-margin:30px auto;
-}
-
-.plate{
-position:absolute;
-bottom:0;
-width:240px;
-height:20px;
-background:#ddd;
-border-radius:50%;
-left:50%;
-transform:translateX(-50%);
-}
-
-.base,.middle,.top{
-position:absolute;
-left:50%;
-transform:translateX(-50%);
-border-radius:12px;
-}
-
-.base{bottom:20px;width:200px;height:70px;background:#c97a3a;}
-.middle{bottom:85px;width:160px;height:60px;background:#b5652d;}
-.top{bottom:140px;width:120px;height:50px;background:#9c4a1a;}
-
-.candle{
-position:absolute;
-bottom:190px;
-left:50%;
-transform:translateX(-50%);
-width:10px;
-height:40px;
-background:white;
-}
-
-.flame{
-position:absolute;
-top:-18px;
-left:50%;
-transform:translateX(-50%);
-width:14px;
-height:14px;
-background:orange;
-border-radius:50%;
-box-shadow:0 0 20px orange;
-animation:flicker .2s infinite;
-}
-
-@keyframes flicker{
-50%{transform:translateX(-50%) scale(1.2);}
-}
-
-/* ========== FINAL ========== */
-
-.finalBox h1{
-font-size:42px;
-}
-
-canvas{
-position:absolute;
-inset:0;
-pointer-events:none;
 }
