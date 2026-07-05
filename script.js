@@ -53,11 +53,18 @@ startBtn.onclick = function () {
     },1500);
 
 }
-
 function birthdayRoom(){
 
 document.body.innerHTML = `
 <div class="birthdayRoom">
+
+<div class="balloons">
+    <div class="balloon b1"></div>
+    <div class="balloon b2"></div>
+    <div class="balloon b3"></div>
+    <div class="balloon b4"></div>
+    <div class="balloon b5"></div>
+</div>
 
 <h1>🎂 Happy Birthday Geet ❤️</h1>
 
@@ -84,17 +91,18 @@ document.body.innerHTML = `
 </div>
 
 </div>
+
 <button id="cakeBtn">
-Blow Candle 💨
+💨 Blow Candle
 </button>
 
 </div>
 `;
 
-document.getElementById("cakeBtn").onclick=function(){
+document.getElementById("cakeBtn").onclick = function(){
 
-alert("🎉 Candle Blown! Fireworks coming next!");
-
-}
+alert("🎆 Fireworks Coming Soon!");
 
 }
+
+                    }
