@@ -70,8 +70,70 @@ text.innerHTML=lines[index];
 
 }else{
 
-alert("🎂 Next: The Birthday Room (coming next!)");
+showBirthdayRoom();");
+function showBirthdayRoom() {
 
+document.body.innerHTML = `
+
+<section id="birthdayRoom">
+
+<div class="room">
+
+<h1>🎉 Happy 14th Birthday Geet ❤️</h1>
+
+<p>
+Today isn't just another day...
+<br>
+It's your special universe.
+</p>
+
+<div class="cake">
+
+<div class="plate"></div>
+
+<div class="layer layer1"></div>
+
+<div class="layer layer2"></div>
+
+<div class="layer layer3"></div>
+
+<div class="candle">
+
+<div class="flame" id="flame"></div>
+
+</div>
+
+</div>
+
+<button id="blowBtn">
+💨 Blow Candle
+</button>
+
+</div>
+
+</section>
+
+`;
+
+document
+.getElementById("blowBtn")
+.onclick = blowCandle;
+
+}
+
+function blowCandle(){
+
+document
+.getElementById("flame")
+.style.opacity="0";
+
+setTimeout(()=>{
+
+alert("🎆 Fireworks Coming Next!");
+
+},700);
+
+    }
 }
 
 }
