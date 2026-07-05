@@ -64,9 +64,26 @@ document.body.innerHTML = `
 <p>Your magical birthday journey has begun.</p>
 
 <div class="cake">
-🍰
+
+<div class="plate"></div>
+
+<div class="cake-base"></div>
+
+<div class="cake-middle"></div>
+
+<div class="cake-top"></div>
+
+<div class="icing"></div>
+
+<div class="drip drip1"></div>
+<div class="drip drip2"></div>
+<div class="drip drip3"></div>
+
+<div class="candle">
+<div class="flame"></div>
 </div>
 
+</div>
 <button id="cakeBtn">
 Blow Candle 💨
 </button>
