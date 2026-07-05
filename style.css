@@ -1,259 +1,248 @@
 /* =====================================
-PROJECT STARDUST
-PART 1 - UNIVERSE ENGINE
+   PROJECT STARDUST
+   PART 1 - UNIVERSE ENGINE
 ===================================== */
 
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 html,body{
-width:100%;
-height:100%;
-overflow:hidden;
-font-family:'Poppins',sans-serif;
-background:#02040d;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:'Poppins',sans-serif;
+    background:#02040d;
 }
 
 body{
-display:flex;
-justify-content:center;
-align-items:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
 /* =========================
-LOADING SCREEN
+   LOADING SCREEN
 ========================= */
 
 #loadingScreen{
-position:relative;
-width:100%;
-height:100vh;
-overflow:hidden;
-background:
-radial-gradient(circle at top,#16214d 0%,#070b1b 35%,#010204 100%);
+    position:relative;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+    background:
+    radial-gradient(circle at top,#16214d 0%,#070b1b 35%,#010204 100%);
 }
 
 /* =========================
-MOON GLOW
+   MOON GLOW
 ========================= */
 
 .moonGlow{
-position:absolute;
-top:-180px;
-right:-120px;
+    position:absolute;
+    top:-180px;
+    right:-120px;
 
-width:420px;  
-height:420px;  
+    width:420px;
+    height:420px;
 
-border-radius:50%;  
+    border-radius:50%;
 
-background:  
-radial-gradient(circle,  
-rgba(255,255,255,.95),  
-rgba(177,196,255,.45),  
-transparent 70%);  
+    background:
+    radial-gradient(circle,
+    rgba(255,255,255,.95),
+    rgba(177,196,255,.45),
+    transparent 70%);
 
-filter:blur(18px);  
+    filter:blur(18px);
 
-animation:moonFloat 7s ease-in-out infinite;
-
+    animation:moonFloat 7s ease-in-out infinite;
 }
 
 /* =========================
-STARS
+   STARS
 ========================= */
 
 .stars{
-position:absolute;
-inset:0;
+    position:absolute;
+    inset:0;
 
-background-image:  
+    background-image:
 
-radial-gradient(white 1px,transparent 1px),  
-radial-gradient(#ffffffaa 1px,transparent 1px),  
-radial-gradient(#ffffff88 2px,transparent 2px);  
+    radial-gradient(white 1px,transparent 1px),
+    radial-gradient(#ffffffaa 1px,transparent 1px),
+    radial-gradient(#ffffff88 2px,transparent 2px);
 
-background-size:  
-70px 70px,  
-120px 120px,  
-180px 180px;  
+    background-size:
+    70px 70px,
+    120px 120px,
+    180px 180px;
 
-animation:twinkle 10s linear infinite;
-
+    animation:twinkle 10s linear infinite;
 }
 
 /* =========================
-SHOOTING STAR
+   SHOOTING STAR
 ========================= */
 
 .shootingStar{
 
-position:absolute;  
+    position:absolute;
 
-top:120px;  
-left:-250px;  
+    top:120px;
+    left:-250px;
 
-width:220px;  
-height:3px;  
+    width:220px;
+    height:3px;
 
-border-radius:20px;  
+    border-radius:20px;
 
-background:linear-gradient(  
-90deg,  
-white,  
-rgba(255,255,255,0)  
-);  
+    background:linear-gradient(
+    90deg,
+    white,
+    rgba(255,255,255,0)
+    );
 
-box-shadow:  
-0 0 12px white,  
-0 0 30px #60a5fa,  
-0 0 60px #8b5cf6;  
+    box-shadow:
+    0 0 12px white,
+    0 0 30px #60a5fa,
+    0 0 60px #8b5cf6;
 
-transform:rotate(-20deg);  
+    transform:rotate(-20deg);
 
-animation:shoot 6s linear infinite;
-
+    animation:shoot 6s linear infinite;
 }
 
 /* =========================
-CONTENT
+   CONTENT
 ========================= */
 
 .content{
 
-position:absolute;  
+    position:absolute;
 
-top:50%;  
-left:50%;  
+    top:50%;
+    left:50%;
 
-transform:translate(-50%,-50%);  
+    transform:translate(-50%,-50%);
 
-width:90%;  
-max-width:750px;  
+    width:90%;
+    max-width:750px;
 
-text-align:center;  
+    text-align:center;
 
-z-index:20;
-
+    z-index:20;
 }
 
 .smallText{
 
-color:#cbd5e1;  
+    color:#cbd5e1;
 
-font-size:18px;  
+    font-size:18px;
 
-letter-spacing:2px;  
+    letter-spacing:2px;
 
-margin-bottom:20px;  
+    margin-bottom:20px;
 
-opacity:.9;
-
+    opacity:.9;
 }
 
 .mainTitle{
 
-color:white;  
+    color:white;
 
-font-size:65px;  
+    font-size:65px;
 
-line-height:1.15;  
+    line-height:1.15;
 
-font-weight:700;
-
+    font-weight:700;
 }
 
 .mainTitle span{
 
-display:block;  
+    display:block;
 
-margin-top:10px;  
+    margin-top:10px;
 
-font-family:'Great Vibes',cursive;  
+    font-family:'Great Vibes',cursive;
 
-color:#ec4899;  
+    color:#ec4899;
 
-font-size:80px;  
+    font-size:80px;
 
-text-shadow:  
-0 0 20px #ec4899,  
-0 0 40px #8b5cf6;
-
+    text-shadow:
+    0 0 20px #ec4899,
+    0 0 40px #8b5cf6;
 }
 
 .subtitle{
 
-margin-top:35px;  
+    margin-top:35px;
 
-color:#d8dbe7;  
+    color:#d8dbe7;
 
-font-size:22px;  
+    font-size:22px;
 
-line-height:1.8;
-
+    line-height:1.8;
 }
 
 .subtitle strong{
 
-color:white;  
+    color:white;
 
-font-size:26px;
-
+    font-size:26px;
 }
 
 /* =========================
-BUTTON
+   BUTTON
 ========================= */
 
 #startBtn{
 
-margin-top:50px;  
+    margin-top:50px;
 
-padding:18px 42px;  
+    padding:18px 42px;
 
-border:none;  
+    border:none;
 
-border-radius:50px;  
+    border-radius:50px;
 
-cursor:pointer;  
+    cursor:pointer;
 
-font-size:20px;  
+    font-size:20px;
 
-font-weight:600;  
+    font-weight:600;
 
-color:white;  
+    color:white;
 
-background:  
-linear-gradient(  
-135deg,  
-#8b5cf6,  
-#ec4899);  
+    background:
+    linear-gradient(
+    135deg,
+    #8b5cf6,
+    #ec4899);
 
-box-shadow:  
-0 0 20px rgba(236,72,153,.4),  
-0 0 60px rgba(139,92,246,.4);  
+    box-shadow:
+    0 0 20px rgba(236,72,153,.4),
+    0 0 60px rgba(139,92,246,.4);
 
-transition:.35s;
-
+    transition:.35s;
 }
 
 #startBtn:hover{
 
-transform:  
-translateY(-4px)  
-scale(1.05);  
+    transform:
+    translateY(-4px)
+    scale(1.05);
 
-box-shadow:  
-0 0 35px rgba(236,72,153,.8),  
-0 0 80px rgba(139,92,246,.8);
-
+    box-shadow:
+    0 0 35px rgba(236,72,153,.8),
+    0 0 80px rgba(139,92,246,.8);
 }
 
 /* =========================
-ANIMATIONS
+   ANIMATIONS
 ========================= */
 
 @keyframes moonFloat{
@@ -314,7 +303,7 @@ opacity:0;
 }
 
 /* =========================
-MOBILE
+   MOBILE
 ========================= */
 
 @media(max-width:768px){
@@ -351,7 +340,7 @@ padding:16px 34px;
 
 }
 
-}
+  }
 /* ===========================
 FADE OUT
 =========================== */
@@ -782,7 +771,7 @@ font-size:120px;
 
 margin:40px;
 
-}
+   }
 /* ===========================
 REALISTIC CAKE
 =========================== */
@@ -1004,9 +993,9 @@ scale(1.1);
 
 }
 
-}
+   }
 /* ===========================
-FLOATING BALLOONS
+   FLOATING BALLOONS
 =========================== */
 
 .balloons{
