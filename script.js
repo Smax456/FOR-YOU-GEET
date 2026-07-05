@@ -4,49 +4,80 @@ startBtn.onclick = function () {
 
     const loadingScreen = document.getElementById("loadingScreen");
 
-    loadingScreen.style.transition = "opacity 1.5s ease";
+    loadingScreen.style.transition = "opacity 1.5s";
     loadingScreen.style.opacity = "0";
 
     setTimeout(() => {
 
         loadingScreen.innerHTML = `
-        <div style="
-            width:100%;
-            height:100vh;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            flex-direction:column;
-            background:#050816;
-            color:white;
-            font-family:Poppins,sans-serif;
-            text-align:center;
-            padding:30px;
-        ">
+        <div class="storyPage">
+
             <h1>Hello Geet ❤️</h1>
 
-            <p style="margin-top:20px;font-size:22px;">
-                Welcome to your universe...
-            </p>
+            <p id="story"></p>
 
-            <button id="continueBtn"
-            style="
-            margin-top:40px;
-            padding:15px 30px;
-            border:none;
-            border-radius:40px;
-            background:#ff4fa0;
-            color:white;
-            font-size:18px;
-            cursor:pointer;
-            ">
+            <button id="nextBtn" style="display:none;">
                 Continue ✨
             </button>
+
         </div>
         `;
 
         loadingScreen.style.opacity = "1";
 
+        const message =
+        "Some people become family not because of blood... but because of the place they earn in our hearts.";
+
+        let i = 0;
+
+        const story = document.getElementById("story");
+
+        const interval = setInterval(() => {
+
+            story.innerHTML += message[i];
+
+            i++;
+
+            if(i >= message.length){
+
+                clearInterval(interval);
+
+                document.getElementById("nextBtn").style.display = "inline-block";
+
+            }
+
+        },40);
+
+        document.getElementById("nextBtn").onclick = birthdayRoom;
+
     },1500);
 
-};
+}
+
+function birthdayRoom(){
+
+document.body.innerHTML = `
+<div class="birthdayRoom">
+
+<h1>🎂 Happy Birthday Geet ❤️</h1>
+
+<p>Your magical birthday journey has begun.</p>
+
+<div class="cake">
+🍰
+</div>
+
+<button id="cakeBtn">
+Blow Candle 💨
+</button>
+
+</div>
+`;
+
+document.getElementById("cakeBtn").onclick=function(){
+
+alert("🎉 Candle Blown! Fireworks coming next!");
+
+}
+
+}
