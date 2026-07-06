@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Sister ❤️</title>
+    <title>Happy Birthday ❤️</title>
 
     <link rel="stylesheet" href="style.css">
 
@@ -13,77 +13,87 @@
 <body>
 
 <!-- Loading Screen -->
+
 <div id="loader">
-    <h1>✨ Preparing Your Surprise...</h1>
+
+    <h2>Preparing Your Surprise ✨</h2>
+
 </div>
 
 <!-- Background -->
+
 <div class="stars"></div>
 <div class="moon"></div>
 
-<!-- Music Button -->
+<!-- Progress Bar -->
+
+<div id="progress"></div>
+
+<!-- Music -->
+
 <button id="musicBtn">🎵</button>
 
-<audio id="bgMusic" loop>
-    <source src="assets/music/birthday.mp3" type="audio/mpeg">
+<audio id="music" loop>
+    <source src="assets/music/birthday.mp3">
 </audio>
 
-<!-- Progress -->
-<div id="progressBar"></div>
+<!-- ================= HERO ================= -->
 
-<!-- ====================== -->
-<!-- SECTION 1 -->
-<!-- ====================== -->
+<section id="hero" class="section">
 
-<section class="section hero">
+<h3>Some gifts are wrapped in paper...</h3>
 
-    <h3>Some gifts are wrapped in paper...</h3>
+<h1>
 
-    <h1>
-        This one was wrapped in
-        <span>Stars ✨</span>
-    </h1>
+This one was wrapped in
 
-    <p>
-        A small journey made with lots of love,
-        just for you.
-    </p>
+<span>Stars ✨</span>
 
-    <button class="nextBtn">
-        Begin Journey ❤️
-    </button>
+</h1>
+
+<p>
+
+A little surprise made with lots of love.
+
+</p>
+
+<button class="scrollBtn" data-target="letter">
+
+Begin Journey ❤️
+
+</button>
 
 </section>
 
-<!-- ====================== -->
-<!-- SECTION 2 -->
-<!-- ====================== -->
+<!-- ================= LETTER ================= -->
 
-<section class="section letter">
+<section id="letter" class="section">
 
 <h2>💌 A Letter For You</h2>
 
-<div class="letterBox">
+<div class="glass">
 
 <p id="typewriter"></p>
 
 </div>
 
-<button class="nextBtn">
+<button class="scrollBtn"
+
+data-target="gallery">
+
 Continue →
+
 </button>
 
 </section>
 
-<!-- ====================== -->
-<!-- SECTION 3 -->
-<!-- ====================== -->
+<!-- ================= GALLERY ================= -->
 
-<section class="section gallery">
+<section id="gallery" class="section">
 
 <h2>📸 Beautiful Memories</h2>
 
-<div class="galleryGrid">
+<div class="gallery">
 
 <img src="assets/photos/1.jpg">
 
@@ -99,105 +109,39 @@ Continue →
 
 </div>
 
-<p>
-Every picture tells another beautiful memory...
-</p>
+<button class="scrollBtn"
 
-<button class="nextBtn">
+data-target="wish">
+
 Next ❤️
-</button>
-
-</section>
-
-<!-- ====================== -->
-<!-- SECTION 4 -->
-<!-- ====================== -->
-
-<section class="section cakeSection">
-
-<h2>🎂 Happy Birthday</h2>
-
-<div class="cake">
-
-<div class="candles">
-
-<span class="candle">🕯️</span>
-<span class="candle">🕯️</span>
-<span class="candle">🕯️</span>
-<span class="candle">🕯️</span>
-<span class="candle">🕯️</span>
-
-</div>
-
-<div class="cakeBody"></div>
-
-</div>
-
-<button id="blowBtn">
-
-Blow the Candles 🎉
 
 </button>
 
-<div id="fireworks"></div>
-
 </section>
 
-<!-- ====================== -->
-<!-- SECTION 5 -->
-<!-- ====================== -->
+<!-- ================= WISH ================= -->
 
-<section class="section giftSection">
+<section id="wish" class="section">
 
-<h2>🎁 One More Surprise</h2>
+<h2>❤️ My Birthday Wish</h2>
 
-<div id="giftBox">
-
-🎁
-
-</div>
-
-<div id="giftMessage">
-
-<h2>You Opened It ❤️</h2>
-
-<p>
-
-Every gift becomes old.
-
-But love never does.
-
-Happy Birthday.
-
-</p>
-
-</div>
-
-</section>
-
-<!-- ====================== -->
-<!-- SECTION 6 -->
-<!-- ====================== -->
-
-<section class="section wishes">
-
-<h2>❤️ My Wish For You</h2>
-
-<div class="wishBox">
+<div class="glass">
 
 <p>
 
 May your smile never fade.
 
-May your dreams become reality.
+May every dream come true.
 
-May every year make you stronger,
-happier,
-and even more amazing.
+Stay kind.
 
-No matter how much we grow,
+Stay happy.
 
-You'll always be my little sister.
+Stay strong.
+
+No matter how old we become,
+
+you'll always be my little sister.
 
 Happy Birthday ❤️
 
@@ -205,33 +149,37 @@ Happy Birthday ❤️
 
 </div>
 
-<button class="nextBtn">
+<button class="scrollBtn"
 
-Final Surprise ✨
+data-target="end">
+
+One Last Surprise ✨
 
 </button>
 
 </section>
 
-<!-- ====================== -->
-<!-- SECTION 7 -->
-<!-- ====================== -->
+<!-- ================= END ================= -->
 
-<section class="section ending">
+<section id="end" class="section">
 
 <h1>
 
-Happy Birthday
-
-<span>Sister ❤️</span>
+🎉 Happy Birthday 🎉
 
 </h1>
+
+<h2>
+
+My Lovely Sister ❤️
+
+</h2>
 
 <p>
 
 Thank you for taking this little journey.
 
-I hope today becomes one of your happiest memories.
+I hope today becomes your happiest memory.
 
 </p>
 
@@ -241,11 +189,12 @@ Made with ❤️ by Minnu
 
 </h3>
 
-<div class="confetti"></div>
+<div id="confetti"></div>
 
 </section>
 
 <script src="script.js"></script>
 
 </body>
+
 </html>
