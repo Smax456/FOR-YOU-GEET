@@ -1,13 +1,11 @@
-/* ===================================
+/* ===============================
    GOOGLE FONT
-=================================== */
-
+================================== */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap');
 
-/* ===================================
+/* ===============================
    RESET
-=================================== */
-
+================================== */
 *{
     margin:0;
     padding:0;
@@ -19,305 +17,195 @@ html{
 }
 
 body{
-
     font-family:'Poppins',sans-serif;
-
-    background:#07142d;
-
-    color:white;
-
+    background:linear-gradient(to bottom,#081224,#0d1f3d,#162b52);
+    color:#fff;
     overflow-x:hidden;
-
 }
 
-/* ===================================
-   LOADING SCREEN
-=================================== */
-
+/* ===============================
+   LOADER
+================================== */
 #loader{
-
     position:fixed;
-
     inset:0;
-
-    background:#07142d;
-
     display:flex;
-
     justify-content:center;
-
     align-items:center;
-
+    background:#081224;
     z-index:9999;
-
-    font-size:2rem;
-
-    font-weight:600;
-
-    letter-spacing:1px;
-
+    transition:.8s;
 }
 
-/* ===================================
-   STARS
-=================================== */
+#loader h2{
+    font-size:2rem;
+    color:#ffd86b;
+    animation:pulse 1.8s infinite;
+}
 
+/* ===============================
+   STARRY BACKGROUND
+================================== */
 .stars{
-
     position:fixed;
-
-    width:100%;
-
-    height:100%;
-
-    left:0;
-
-    top:0;
+    inset:0;
+    z-index:-3;
 
     background-image:
+        radial-gradient(2px 2px at 20px 30px,#fff,transparent),
+        radial-gradient(2px 2px at 120px 80px,#fff,transparent),
+        radial-gradient(1px 1px at 250px 180px,#fff,transparent),
+        radial-gradient(2px 2px at 350px 90px,#fff,transparent),
+        radial-gradient(1px 1px at 500px 250px,#fff,transparent);
 
-    radial-gradient(white 1px, transparent 1px),
-
-    radial-gradient(white 1px, transparent 1px),
-
-    radial-gradient(white 2px, transparent 2px);
-
-    background-size:
-
-    120px 120px,
-
-    180px 180px,
-
-    260px 260px;
-
-    background-position:
-
-    0 0,
-
-    40px 70px,
-
-    100px 120px;
-
-    opacity:.5;
+    background-size:600px 600px;
 
     animation:twinkle 5s infinite alternate;
-
-    z-index:-2;
-
 }
 
-/* ===================================
+/* ===============================
    MOON
-=================================== */
-
+================================== */
 .moon{
-
     position:fixed;
+    top:50px;
+    right:50px;
 
-    width:170px;
-
-    height:170px;
+    width:140px;
+    height:140px;
 
     border-radius:50%;
 
-    background:#fff8dc;
-
-    top:70px;
-
-    right:70px;
+    background:#fff9d6;
 
     box-shadow:
+        0 0 25px white,
+        0 0 60px rgba(255,255,255,.8),
+        0 0 120px rgba(255,255,255,.4);
 
-    0 0 40px #fff,
-
-    0 0 90px rgba(255,255,255,.7),
-
-    0 0 140px rgba(255,255,255,.4);
-
-    z-index:-1;
-
+    z-index:-2;
 }
 
-/* ===================================
+/* ===============================
    PROGRESS BAR
-=================================== */
-
-#progressBar{
-
+================================== */
+#progress{
     position:fixed;
-
     top:0;
-
     left:0;
-
+    height:4px;
     width:0%;
-
-    height:5px;
-
     background:linear-gradient(90deg,#ff7eb3,#ffd86b);
-
-    z-index:999;
-
+    z-index:1000;
 }
 
-/* ===================================
+/* ===============================
    MUSIC BUTTON
-=================================== */
-
+================================== */
 #musicBtn{
-
     position:fixed;
-
     right:20px;
-
     bottom:20px;
 
-    width:60px;
-
-    height:60px;
+    width:55px;
+    height:55px;
 
     border:none;
-
     border-radius:50%;
+
+    background:rgba(255,255,255,.15);
+    backdrop-filter:blur(12px);
+
+    color:white;
+    font-size:1.3rem;
 
     cursor:pointer;
 
-    font-size:1.3rem;
-
-    background:rgba(255,255,255,.15);
-
-    color:white;
-
-    backdrop-filter:blur(12px);
-
     transition:.3s;
-
-    z-index:100;
-
 }
 
 #musicBtn:hover{
-
     transform:scale(1.1);
-
 }
 
-/* ===================================
+/* ===============================
    SECTIONS
-=================================== */
-
+================================== */
 .section{
-
     min-height:100vh;
 
     display:flex;
-
+    flex-direction:column;
     justify-content:center;
-
     align-items:center;
 
-    flex-direction:column;
+    padding:70px 20px;
 
     text-align:center;
-
-    padding:60px 25px;
-
 }
 
-/* ===================================
-   HERO SECTION
-=================================== */
-
-.hero h3{
-
-    color:#ffc5e6;
-
-    font-size:1.2rem;
-
+/* ===============================
+   HERO
+================================== */
+#hero h3{
+    color:#ffc9e6;
+    font-weight:400;
     margin-bottom:20px;
-
 }
 
-.hero h1{
-
+#hero h1{
     font-size:4rem;
-
     line-height:1.2;
-
-    max-width:900px;
-
+    max-width:850px;
 }
 
-.hero span{
-
+#hero span{
     color:#ffd86b;
-
     font-family:'Dancing Script',cursive;
-
     font-size:4.5rem;
-
 }
 
-.hero p{
-
-    margin-top:30px;
-
-    max-width:700px;
-
-    font-size:1.2rem;
-
+#hero p{
+    margin-top:25px;
+    font-size:1.15rem;
     opacity:.85;
-
+    max-width:650px;
     line-height:1.8;
-
 }
 
-/* ===================================
+/* ===============================
    BUTTONS
-=================================== */
+================================== */
+.scrollBtn{
+    margin-top:45px;
 
-.nextBtn{
-
-    margin-top:50px;
-
-    padding:16px 45px;
+    padding:15px 40px;
 
     border:none;
-
     border-radius:50px;
 
-    cursor:pointer;
+    background:linear-gradient(45deg,#ff7eb3,#ff5fa2);
 
     color:white;
 
     font-size:1rem;
 
-    background:linear-gradient(45deg,#ff6fb5,#ff9ed2);
+    cursor:pointer;
 
     transition:.35s;
-
 }
 
-.nextBtn:hover{
-
+.scrollBtn:hover{
     transform:translateY(-5px);
-
-    box-shadow:
-
-    0 15px 40px rgba(255,120,180,.45);
-
+    box-shadow:0 12px 35px rgba(255,105,180,.45);
 }
 
-/* ===================================
-   GLASS BOX
-=================================== */
-
-.letterBox,
-.wishBox{
-
+/* ===============================
+   GLASS CARD
+================================== */
+.glass{
     width:min(800px,95%);
-
-    margin-top:30px;
+    margin-top:35px;
 
     padding:35px;
 
@@ -325,102 +213,52 @@ body{
 
     background:rgba(255,255,255,.08);
 
-    backdrop-filter:blur(18px);
+    backdrop-filter:blur(16px);
 
     border:1px solid rgba(255,255,255,.15);
 
+    line-height:2;
 }
 
-/* ===================================
+/* ===============================
    ANIMATIONS
-=================================== */
-
+================================== */
 @keyframes twinkle{
-
-    from{
-
-        opacity:.35;
-
-    }
-
-    to{
-
-        opacity:.75;
-
-    }
-
+    from{opacity:.45;}
+    to{opacity:.9;}
 }
 
-@keyframes float{
-
-    0%{
-
-        transform:translateY(0px);
-
-    }
-
-    50%{
-
-        transform:translateY(-15px);
-
-    }
-
-    100%{
-
-        transform:translateY(0px);
-
-    }
-
+@keyframes pulse{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.08);}
+    100%{transform:scale(1);}
 }
 
-.hero{
-
-    animation:float 5s ease-in-out infinite;
-
-}
-
-/* ===================================
+/* ===============================
    RESPONSIVE
-=================================== */
-
+================================== */
 @media(max-width:768px){
 
-.hero h1{
+    .moon{
+        width:90px;
+        height:90px;
+        right:20px;
+        top:25px;
+    }
 
-font-size:2.5rem;
+    #hero h1{
+        font-size:2.5rem;
+    }
 
-}
+    #hero span{
+        font-size:3rem;
+    }
 
-.hero span{
+    #hero p{
+        font-size:1rem;
+    }
 
-font-size:3rem;
-
-}
-
-.hero p{
-
-font-size:1rem;
-
-}
-
-.moon{
-
-width:120px;
-
-height:120px;
-
-right:20px;
-
-top:30px;
-
-}
-
-#musicBtn{
-
-width:50px;
-
-height:50px;
-
-}
-
-   } 
+    .glass{
+        padding:25px;
+    }
+} 
