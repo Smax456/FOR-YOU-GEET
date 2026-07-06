@@ -85,6 +85,24 @@ document.body.innerHTML = `
 <div class="drip drip1"></div>
 <div class="drip drip2"></div>
 <div class="drip drip3"></div>
+<div class="controls">
+
+<button id="cherryBtn">🍒 Cherries</button>
+
+<button id="chocoBtn">🍫 Chocolate</button>
+
+<button id="sprinkleBtn">✨ Sprinkles</button>
+
+<button id="flowerBtn">🌸 Flowers</button>
+
+</div>
+
+<p id="statusText">
+Decorate your birthday cake...
+</p>
+
+<div id="decorations"></div>
+
 
 <div class="candle">
 <div class="flame"></div>
@@ -92,17 +110,67 @@ document.body.innerHTML = `
 
 </div>
 
-<button id="cakeBtn">
-💨 Blow Candle
-</button>
+let decorated = 0;
 
-</div>
-`;
+function checkDecorations(){
 
-document.getElementById("cakeBtn").onclick = function(){
+    if(decorated === 4){
 
-alert("🎆 Fireworks Coming Soon!");
+        document.getElementById("statusText").innerHTML =
+        "✨ Beautiful! Time to light your birthday candles...";
+
+        setTimeout(showCandles,1500);
+
+    }
 
 }
 
-                    }
+document.addEventListener("click",(e)=>{
+
+    const deco=document.getElementById("decorations");
+
+    if(!deco) return;
+
+    if(e.target.id==="cherryBtn"){
+
+        deco.innerHTML += "<span class='deco'>🍒</span>";
+        e.target.disabled=true;
+        decorated++;
+        checkDecorations();
+
+    }
+
+    if(e.target.id==="chocoBtn"){
+
+        deco.innerHTML += "<span class='deco'>🍫</span>";
+        e.target.disabled=true;
+        decorated++;
+        checkDecorations();
+
+    }
+
+    if(e.target.id==="sprinkleBtn"){
+
+        deco.innerHTML += "<span class='deco'>✨</span>";
+        e.target.disabled=true;
+        decorated++;
+        checkDecorations();
+
+    }
+
+    if(e.target.id==="flowerBtn"){
+
+        deco.innerHTML += "<span class='deco'>🌸</span>";
+        e.target.disabled=true;
+        decorated++;
+        checkDecorations();
+
+    }
+
+});
+
+function showCandles(){
+
+    alert("🕯️ Next: 14 Candles!");
+
+}
