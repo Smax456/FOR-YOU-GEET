@@ -840,3 +840,40 @@ p{
 }
 
 }
+/* CONFETTI */
+
+.confetti{
+
+position:fixed;
+
+top:-20px;
+
+width:10px;
+
+height:10px;
+
+border-radius:2px;
+
+animation:fall 4s linear forwards;
+
+z-index:999;
+
+}
+
+@keyframes fall{
+
+0%{
+
+transform:translateY(-20px) rotate(0);
+
+}
+
+100%{
+
+transform:translateY(110vh) rotate(720deg);
+
+opacity:0;
+
+}
+
+}
