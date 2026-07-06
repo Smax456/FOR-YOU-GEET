@@ -103,9 +103,22 @@ Decorate your birthday cake...
 
 <div id="decorations"></div>
 
+<div class="candle"><div class="flame"></div></div>
+<div class="candle"><div class="flame"></div></div>
+<div class="candle"><div class="flame"></div></div>
+<div class="candle"><div class="flame"></div></div>
+<div class="candle"><div class="flame"></div></div>
+<div class="candle"><div class="flame"></div></div>
+<div class="candle"><div class="flame"></div></div>
 
-<div class="candle">
-<div class="flame"></div>
+<div class="candle"><div class="flame"></div></div>
+<div class="candle"><div class="flame"></div></div>
+<div class="candle"><div class="flame"></div></div>
+<div class="candle"><div class="flame"></div></div>
+<div class="candle"><div class="flame"></div></div>
+<div class="candle"><div class="flame"></div></div>
+<div class="candle"><div class="flame"></div></div>
+
 </div>
 
 </div>
