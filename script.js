@@ -1,4 +1,4 @@
-// State Manager Engine
+// Central State Engine Manager
 const StateEngine = {
     currentPhase: 'loadingScreen',
     
@@ -6,7 +6,7 @@ const StateEngine = {
         const current = document.getElementById(this.currentPhase);
         const next = document.getElementById(nextPhaseId);
         
-        if(current) {
+        if (current && next) {
             current.style.opacity = '0';
             setTimeout(() => {
                 current.classList.add('hidden');
@@ -16,72 +16,77 @@ const StateEngine = {
                 setTimeout(() => {
                     next.classList.add('active');
                 }, 50);
-            }, 1200);
+            }, 1000);
+            this.currentPhase = nextPhaseId;
         }
-        this.currentPhase = nextPhaseId;
     }
 };
 
-// Phase 1 Launch Setup
+// Phase 1 Setup Engine Kickoff
 document.getElementById('startBtn').addEventListener('click', () => {
     StateEngine.transition('storyScreen');
     startTypewriter();
 });
 
-// Phase 2 Typewriter Implementation
+// Phase 2 Typewriter Logic
 function startTypewriter() {
     const textStr = "Some people become family not because of blood... but because of the place they earn in our hearts.";
     let idx = 0;
     const container = document.getElementById('storyText');
-    
+    container.innerHTML = ""; // Clear wrapper just in case
+
     const writer = setInterval(() => {
         container.innerHTML += textStr[idx];
         idx++;
-        if(idx >= textStr.length) {
+        if (idx >= textStr.length) {
             clearInterval(writer);
             const btn = document.getElementById('nextBtn');
-            btn.style.opacity = '1';
+            btn.style.display = 'inline-block';
             btn.onclick = () => StateEngine.transition('birthdayRoom');
         }
     }, 50);
 }
 
-// Phase 3 Decorating & Light Management 
+// Phase 3 Room Decoration Systems Manager
 let uniqueDecorationsCount = 0;
 const totalNeededDecorations = 4;
 
 document.querySelectorAll('.deco-btn').forEach(button => {
     button.addEventListener('click', (e) => {
-        const type = e.target.getAttribute('data-item');
+        const itemEmoji = e.target.getAttribute('data-item');
         const layer = document.getElementById('decorations-layer');
         
-        // Spawn decoration dynamically onto the top area of your cake layer
+        // Spawn decoration item with custom layout positions
         const itemSpan = document.createElement('span');
-        itemSpan.className = 'deco pop-item';
-        itemSpan.innerText = type;
-        itemSpan.style.left = `${Math.random() * 60 + 20}%`;
+        itemSpan.className = 'deco-placed';
+        itemSpan.innerText = itemEmoji;
+        itemSpan.style.left = `${Math.random() * 70 + 15}%`;
+        itemSpan.style.top = `${Math.random() * 20 + 40}%`;
         layer.appendChild(itemSpan);
         
         e.target.disabled = true;
         uniqueDecorationsCount++;
         
-        if(uniqueDecorationsCount === totalNeededDecorations) {
+        if (uniqueDecorationsCount === totalNeededDecorations) {
             handleDecorationComplete();
         }
     });
 });
 
 function handleDecorationComplete() {
-    document.getElementById('statusText').innerText = "✨ Truly Beautiful! Time to step up to the candles...";
-    const grid = document.querySelector('.candles-grid');
-    grid.classList.remove('hidden');
+    document.getElementById('statusText').innerText = "✨ Truly Beautiful! Time to light the candles...";
     
-    // Fill the grid automatically with your 14 structural candles
-    grid.innerHTML = Array(14).fill('<div class="candle"><div class="flame"></div></div>').join('');
-    
-    const actionBtn = document.getElementById('actionBtn');
-    actionBtn.classList.remove('hidden');
-    actionBtn.onclick = blowCandlesOut;
+    setTimeout(() => {
+        const grid = document.querySelector('.candles-grid');
+        grid.classList.remove('hidden');
+        
+        // Populate exactly 14 candles smoothly inside the grid structure
+        grid.innerHTML = Array(14).fill('<div class="candle"><div class="flame"></div></div>').join('');
+        
+        const actionBtn = document.getElementById('actionBtn');
+        actionBtn.classList.remove('hidden');
+        actionBtn.onclick = blowCandlesOut;
+    }, 1000);
 }
 
 function blowCandlesOut() {
@@ -94,16 +99,16 @@ function blowCandlesOut() {
     
     document.getElementById('statusText').innerText = "Make a wish, Geet! 🌌";
     
-    // Launch Fireworks Canvas Engine
+    // Trigger Canvas Explosions Engine
     initFireworks();
     
     setTimeout(() => {
         StateEngine.transition('giftScreen');
         setupGiftInteraction();
-    }, 3000);
+    }, 3500);
 }
 
-// Lightweight HTML5 High-Performance Particle Canvas Engine
+// HTML5 Canvas Particles Fireworks Overlay Engine
 function initFireworks() {
     const canvas = document.getElementById('fireworksCanvas');
     const ctx = canvas.getContext('2d');
@@ -137,12 +142,14 @@ function initFireworks() {
         }
     }
     
-    // Create random point bursts
-    for(let burst=0; burst<5; burst++) {
+    // Spawn bursts sequentially across display
+    for(let burst = 0; burst < 6; burst++) {
         setTimeout(() => {
             const rx = Math.random() * canvas.width;
-            const ry = Math.random() * (canvas.height * 0.6);
-            for(let p=0; p<60; p++) particles.push(new Particle(rx, ry));
+            const ry = Math.random() * (canvas.height * 0.5) + 100;
+            for(let p = 0; p < 50; p++) {
+                particles.push(new Particle(rx, ry));
+            }
         }, burst * 400);
     }
     
@@ -150,23 +157,28 @@ function initFireworks() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         particles = particles.filter(p => p.alpha > 0);
         particles.forEach(p => { p.update(); p.draw(); });
-        if(particles.length > 0) requestAnimationFrame(renderLoop);
+        if (particles.length > 0) requestAnimationFrame(renderLoop);
     }
     renderLoop();
 }
 
-// Phase 4 Present Box Reveal Control Mechanics
+// Phase 4: Interactive Gift Box Manager
 function setupGiftInteraction() {
     const box = document.querySelector('.gift-box');
+    const hint = document.getElementById('giftHint');
+    
     box.onclick = () => {
-        if(!box.classList.contains('open')) {
+        if (!box.classList.contains('open')) {
             box.classList.add('open');
+            hint.style.opacity = '0';
+            
             setTimeout(() => {
+                box.style.display = 'none';
                 const letter = document.querySelector('.letter-wrapper');
                 letter.classList.remove('hidden');
                 letter.style.opacity = '1';
-                letter.style.transition = 'opacity 1s ease';
-            }, 800);
+            }, 1000);
         }
     };
 }
+ 
