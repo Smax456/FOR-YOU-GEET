@@ -143,3 +143,91 @@ document.body.appendChild(confetti);
 }
 
 }
+/* ==========================
+   SHOOTING STARS
+========================== */
+
+function createShootingStar() {
+
+    const star = document.createElement("div");
+
+    star.className = "shooting-star";
+
+    star.style.top = Math.random() * 40 + "%";
+    star.style.left = "-150px";
+
+    document.body.appendChild(star);
+
+    setTimeout(() => {
+        star.remove();
+    }, 2500);
+
+}
+
+setInterval(createShootingStar, 5000);
+
+
+/* ==========================
+   FLOATING HEARTS
+========================== */
+
+function createHeart() {
+
+    if (current !== sections.length - 1) return;
+
+    const heart = document.createElement("div");
+
+    heart.className = "floating-heart";
+
+    heart.innerHTML = "❤";
+
+    heart.style.left = Math.random() * 100 + "vw";
+
+    heart.style.fontSize = (18 + Math.random() * 20) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+
+}
+
+setInterval(createHeart, 700);
+
+
+/* ==========================
+   FINAL MESSAGE ANIMATION
+========================== */
+
+const finalCard = document.querySelector(".finalCard");
+
+if(finalCard){
+
+    finalCard.style.opacity = "0";
+
+}
+
+function showFinalCard(){
+
+    if(current === sections.length - 1){
+
+        setTimeout(()=>{
+
+            finalCard.style.transition="1.5s";
+
+            finalCard.style.opacity="1";
+
+            finalCard.style.transform="scale(1)";
+
+        },800);
+
+    }
+
+}
+
+nextButtons.forEach(btn=>{
+
+btn.addEventListener("click",showFinalCard);
+
+});
