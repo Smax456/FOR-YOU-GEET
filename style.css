@@ -877,3 +877,92 @@ opacity:0;
 }
 
 }
+/* ==========================
+   SHOOTING STAR
+========================== */
+
+.shooting-star{
+
+position:fixed;
+
+width:140px;
+
+height:2px;
+
+background:linear-gradient(90deg,#fff,transparent);
+
+transform:rotate(-30deg);
+
+animation:shootStar 2s linear forwards;
+
+z-index:-1;
+
+}
+
+@keyframes shootStar{
+
+from{
+
+transform:translateX(0) translateY(0) rotate(-30deg);
+
+opacity:1;
+
+}
+
+to{
+
+transform:translateX(140vw) translateY(180px) rotate(-30deg);
+
+opacity:0;
+
+}
+
+}
+
+/* ==========================
+   FLOATING HEARTS
+========================== */
+
+.floating-heart{
+
+position:fixed;
+
+bottom:-30px;
+
+color:#ff6ec7;
+
+animation:heartRise 6s linear forwards;
+
+pointer-events:none;
+
+z-index:999;
+
+text-shadow:0 0 12px #ff6ec7;
+
+}
+
+@keyframes heartRise{
+
+0%{
+
+transform:translateY(0) scale(.8);
+
+opacity:0;
+
+}
+
+20%{
+
+opacity:1;
+
+}
+
+100%{
+
+transform:translateY(-110vh) scale(1.5);
+
+opacity:0;
+
+}
+
+   }
