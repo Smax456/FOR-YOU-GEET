@@ -231,3 +231,57 @@ nextButtons.forEach(btn=>{
 btn.addEventListener("click",showFinalCard);
 
 });
+
+/* ==========================
+   SWIPE SUPPORT (MOBILE)
+========================== */
+
+let startX = 0;
+
+document.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+});
+
+document.addEventListener("touchend", (e) => {
+
+    let endX = e.changedTouches[0].clientX;
+
+    if (startX - endX > 80) {
+        if (current < sections.length - 1) {
+            nextButtons[current].click();
+        }
+    }
+
+});
+
+/* ==========================
+   FADE BETWEEN SECTIONS
+========================== */
+
+sections.forEach(section => {
+
+    section.style.opacity = "0";
+    section.style.transform = "scale(.98)";
+
+});
+
+sections[0].style.opacity = "1";
+sections[0].style.transform = "scale(1)";
+
+nextButtons.forEach(btn=>{
+
+btn.addEventListener("click",()=>{
+
+sections.forEach(sec=>{
+
+sec.style.opacity="0";
+sec.style.transform="scale(.98)";
+
+});
+
+sections[current].style.opacity="1";
+sections[current].style.transform="scale(1)";
+
+});
+
+});
