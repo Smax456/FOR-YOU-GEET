@@ -1,139 +1,172 @@
-const startBtn = document.getElementById("startBtn");
-
-startBtn.onclick = function () {
-    const loadingScreen = document.getElementById("loadingScreen");
-
-    loadingScreen.style.transition = "opacity 1.5s";
-    loadingScreen.style.opacity = "0";
-
-    setTimeout(() => {
-        loadingScreen.innerHTML = `
-        <div class="storyPage">
-            <h1>Hello Geet ❤️</h1>
-            <p id="story"></p>
-            <button id="nextBtn" style="display:none;">
-                Continue ✨
-            </button>
-        </div>
-        `;
-
-        loadingScreen.style.opacity = "1";
-
-        const message = "Some people become family not because of blood... but because of the place they earn in our hearts.";
-        let i = 0;
-        const story = document.getElementById("story");
-
-        const interval = setInterval(() => {
-            story.innerHTML += message[i];
-            i++;
-
-            if (i >= message.length) {
-                clearInterval(interval);
-                document.getElementById("nextBtn").style.display = "inline-block";
-            }
-        }, 40);
-
-        document.getElementById("nextBtn").onclick = birthdayRoom;
-
-    }, 1500);
+// State Manager Engine
+const StateEngine = {
+    currentPhase: 'loadingScreen',
+    
+    transition(nextPhaseId) {
+        const current = document.getElementById(this.currentPhase);
+        const next = document.getElementById(nextPhaseId);
+        
+        if(current) {
+            current.style.opacity = '0';
+            setTimeout(() => {
+                current.classList.add('hidden');
+                current.classList.remove('active');
+                
+                next.classList.remove('hidden');
+                setTimeout(() => {
+                    next.classList.add('active');
+                }, 50);
+            }, 1200);
+        }
+        this.currentPhase = nextPhaseId;
+    }
 };
 
-// Track decorations globally so the event listener can access it
-let decorated = 0;
-
-function birthdayRoom() {
-    document.body.innerHTML = `
-    <div class="birthdayRoom">
-        <div class="balloons">
-            <div class="balloon b1"></div>
-            <div class="balloon b2"></div>
-            <div class="balloon b3"></div>
-            <div class="balloon b4"></div>
-            <div class="balloon b5"></div>
-        </div>
-
-        <h1>🎂 Happy Birthday Geet ❤️</h1>
-        <p>Your magical birthday journey has begun.</p>
-
-        <div class="cake">
-            <div class="plate"></div>
-            <div class="cake-base"></div>
-            <div class="cake-middle"></div>
-            <div class="cake-top"></div>
-            <div class="icing"></div>
-            <div class="drip drip1"></div>
-            <div class="drip drip2"></div>
-            <div class="drip drip3"></div>
-            
-            <div class="controls">
-                <button id="cherryBtn">🍒 Cherries</button>
-                <button id="chocoBtn">🍫 Chocolate</button>
-                <button id="sprinkleBtn">✨ Sprinkles</button>
-                <button id="flowerBtn">🌸 Flowers</button>
-            </div>
-
-            <p id="statusText">Decorate your birthday cake...</p>
-            <div id="decorations"></div>
-
-            <div class="candle"><div class="flame"></div></div>
-            <div class="candle"><div class="flame"></div></div>
-            <div class="candle"><div class="flame"></div></div>
-            <div class="candle"><div class="flame"></div></div>
-            <div class="candle"><div class="flame"></div></div>
-            <div class="candle"><div class="flame"></div></div>
-            <div class="candle"><div class="flame"></div></div>
-            <div class="candle"><div class="flame"></div></div>
-            <div class="candle"><div class="flame"></div></div>
-            <div class="candle"><div class="flame"></div></div>
-            <div class="candle"><div class="flame"></div></div>
-            <div class="candle"><div class="flame"></div></div>
-            <div class="candle"><div class="flame"></div></div>
-            <div class="candle"><div class="flame"></div></div>
-        </div>
-    </div>
-    `;
-} // <-- This closing brace was missing!
-
-function checkDecorations() {
-    if (decorated === 4) {
-        document.getElementById("statusText").innerHTML = "✨ Beautiful! Time to light your birthday candles...";
-        setTimeout(showCandles, 1500);
-    }
-}
-
-document.addEventListener("click", (e) => {
-    const deco = document.getElementById("decorations");
-    if (!deco) return;
-
-    if (e.target.id === "cherryBtn") {
-        deco.innerHTML += "<span class='deco'>🍒</span>";
-        e.target.disabled = true;
-        decorated++;
-        checkDecorations();
-    }
-
-    if (e.target.id === "chocoBtn") {
-        deco.innerHTML += "<span class='deco'>🍫</span>";
-        e.target.disabled = true;
-        decorated++;
-        checkDecorations();
-    }
-
-    if (e.target.id === "sprinkleBtn") {
-        deco.innerHTML += "<span class='deco'>✨</span>";
-        e.target.disabled = true;
-        decorated++;
-        checkDecorations();
-    }
-
-    if (e.target.id === "flowerBtn") {
-        deco.innerHTML += "<span class='deco'>🌸</span>";
-        e.target.disabled = true;
-        decorated++;
-        checkDecorations();
-    }
+// Phase 1 Launch Setup
+document.getElementById('startBtn').addEventListener('click', () => {
+    StateEngine.transition('storyScreen');
+    startTypewriter();
 });
 
-function showCandles() {
-    alert("🕯️ Next: 14 Candles!");
+// Phase 2 Typewriter Implementation
+function startTypewriter() {
+    const textStr = "Some people become family not because of blood... but because of the place they earn in our hearts.";
+    let idx = 0;
+    const container = document.getElementById('storyText');
+    
+    const writer = setInterval(() => {
+        container.innerHTML += textStr[idx];
+        idx++;
+        if(idx >= textStr.length) {
+            clearInterval(writer);
+            const btn = document.getElementById('nextBtn');
+            btn.style.opacity = '1';
+            btn.onclick = () => StateEngine.transition('birthdayRoom');
+        }
+    }, 50);
+}
+
+// Phase 3 Decorating & Light Management 
+let uniqueDecorationsCount = 0;
+const totalNeededDecorations = 4;
+
+document.querySelectorAll('.deco-btn').forEach(button => {
+    button.addEventListener('click', (e) => {
+        const type = e.target.getAttribute('data-item');
+        const layer = document.getElementById('decorations-layer');
+        
+        // Spawn decoration dynamically onto the top area of your cake layer
+        const itemSpan = document.createElement('span');
+        itemSpan.className = 'deco pop-item';
+        itemSpan.innerText = type;
+        itemSpan.style.left = `${Math.random() * 60 + 20}%`;
+        layer.appendChild(itemSpan);
+        
+        e.target.disabled = true;
+        uniqueDecorationsCount++;
+        
+        if(uniqueDecorationsCount === totalNeededDecorations) {
+            handleDecorationComplete();
+        }
+    });
+});
+
+function handleDecorationComplete() {
+    document.getElementById('statusText').innerText = "✨ Truly Beautiful! Time to step up to the candles...";
+    const grid = document.querySelector('.candles-grid');
+    grid.classList.remove('hidden');
+    
+    // Fill the grid automatically with your 14 structural candles
+    grid.innerHTML = Array(14).fill('<div class="candle"><div class="flame"></div></div>').join('');
+    
+    const actionBtn = document.getElementById('actionBtn');
+    actionBtn.classList.remove('hidden');
+    actionBtn.onclick = blowCandlesOut;
+}
+
+function blowCandlesOut() {
+    // Extinguish all flames smoothly
+    document.querySelectorAll('.flame').forEach(flame => {
+        flame.style.animation = 'none';
+        flame.style.opacity = '0';
+        flame.style.transition = 'opacity 0.6s ease';
+    });
+    
+    document.getElementById('statusText').innerText = "Make a wish, Geet! 🌌";
+    
+    // Launch Fireworks Canvas Engine
+    initFireworks();
+    
+    setTimeout(() => {
+        StateEngine.transition('giftScreen');
+        setupGiftInteraction();
+    }, 3000);
+}
+
+// Lightweight HTML5 High-Performance Particle Canvas Engine
+function initFireworks() {
+    const canvas = document.getElementById('fireworksCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    let particles = [];
+    
+    class Particle {
+        constructor(x, y) {
+            this.x = x;
+            this.y = y;
+            this.destX = Math.random() * 6 - 3;
+            this.destY = Math.random() * 6 - 3;
+            this.color = `hsl(${Math.random() * 360}, 100%, 60%)`;
+            this.alpha = 1;
+        }
+        draw() {
+            ctx.save();
+            ctx.globalAlpha = this.alpha;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
+            ctx.fillStyle = this.color;
+            ctx.fill();
+            ctx.restore();
+        }
+        update() {
+            this.x += this.destX;
+            this.y += this.destY;
+            this.alpha -= 0.015;
+        }
+    }
+    
+    // Create random point bursts
+    for(let burst=0; burst<5; burst++) {
+        setTimeout(() => {
+            const rx = Math.random() * canvas.width;
+            const ry = Math.random() * (canvas.height * 0.6);
+            for(let p=0; p<60; p++) particles.push(new Particle(rx, ry));
+        }, burst * 400);
+    }
+    
+    function renderLoop() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles = particles.filter(p => p.alpha > 0);
+        particles.forEach(p => { p.update(); p.draw(); });
+        if(particles.length > 0) requestAnimationFrame(renderLoop);
+    }
+    renderLoop();
+}
+
+// Phase 4 Present Box Reveal Control Mechanics
+function setupGiftInteraction() {
+    const box = document.querySelector('.gift-box');
+    box.onclick = () => {
+        if(!box.classList.contains('open')) {
+            box.classList.add('open');
+            setTimeout(() => {
+                const letter = document.querySelector('.letter-wrapper');
+                letter.classList.remove('hidden');
+                letter.style.opacity = '1';
+                letter.style.transition = 'opacity 1s ease';
+            }, 800);
+        }
+    };
 }
