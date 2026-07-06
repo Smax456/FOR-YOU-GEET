@@ -1,67 +1,66 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>A Universe For Geet ❤️</title>
-
-<link rel="stylesheet" href="style.css">
-
-<link rel="preconnect"
-href="https://fonts.googleapis.com">
-
-<link rel="preconnect"
-href="https://fonts.gstatic.com"
-crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Great+Vibes&display=swap"
-rel="stylesheet">
-
-</head>
-
-<body>
-
-<div id="loadingScreen">
-
-<div class="moonGlow"></div>
-
-<div class="stars"></div>
-
-<div class="shootingStar"></div>
-
-<div class="content">
-
-<h3 class="smallText">
-Some gifts are wrapped in paper...
-</h3>
-
-<h1 class="mainTitle">
-This one
-<span>was wrapped in stars.</span>
-</h1>
-
-<p class="subtitle">
-Made especially for
-<strong>Geet ❤️</strong>
-
-<br><br>
-
-by aman
-</p>
-
-<button id="startBtn">
-✨ Begin Journey ✨
-</button>
-
+<div id="loadingScreen" class="phase active">
+    <div class="moonGlow"></div>
+    <div class="stars"></div>
+    <div class="shootingStar"></div>
+    <div class="content">
+        <h3 class="smallText">Some gifts are wrapped in paper...</h3>
+        <h1 class="mainTitle">This one <span>was wrapped in stars.</span></h1>
+        <p class="subtitle">Made especially for <strong>Geet ❤️</strong><br><br>by aman</p>
+        <button id="startBtn">✨ Begin Journey ✨</button>
+    </div>
 </div>
 
+<div id="storyScreen" class="phase hidden">
+    <div class="stars layout-dim"></div>
+    <div class="storyPage">
+        <h1>Hello Geet ❤️</h1>
+        <p id="storyText"></p>
+        <button id="nextBtn" class="magic-btn" style="opacity: 0;">Continue ✨</button>
+    </div>
 </div>
 
-<script src="script.js"></script>
+<div id="birthdayRoom" class="phase hidden">
+    <div class="balloons"></div>
+    <canvas id="fireworksCanvas"></canvas> <h1 class="room-title">🎂 Happy Birthday Geet ❤️</h1>
+    <p id="statusText">Decorate your birthday cake...</p>
 
-</body>
-  </html>
+    <div class="cake-container">
+        <div class="cake">
+            <div class="plate"></div>
+            <div class="cake-base"></div>
+            <div class="cake-middle"></div>
+            <div class="cake-top"></div>
+            <div class="icing"></div>
+            <div class="drip drip1"></div>
+            <div class="drip drip2"></div>
+            <div class="drip drip3"></div>
+            <div id="decorations-layer"></div>
+            <div class="candles-grid hidden"></div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button class="deco-btn" data-item="🍒">🍒 Cherries</button>
+        <button class="deco-btn" data-item="🍫">🍫 Chocolate</button>
+        <button class="deco-btn" data-item="✨">✨ Sprinkles</button>
+        <button class="deco-btn" data-item="🌸">🌸 Flowers</button>
+    </div>
+    
+    <button id="actionBtn" class="magic-btn hidden">💨 Blow Candles</button>
+</div>
+
+<div id="giftScreen" class="phase hidden">
+    <div class="gift-box-container">
+        <div class="gift-box">
+            <div class="gift-lid"></div>
+            <div class="gift-body"></div>
+        </div>
+    </div>
+    <div class="letter-wrapper hidden">
+        <div class="letter">
+            <h2>To My Favorite Person,</h2>
+            <p>Write your beautiful heartfelt words here for Geet...</p>
+            <p class="signature">With love, aman</p>
+        </div>
+    </div>
+</div>
