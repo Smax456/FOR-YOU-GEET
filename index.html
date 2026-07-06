@@ -1,95 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday ❤️</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Sky Full of Stars ✨ | Happy Birthday Geet</title>
 
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
 
-<!-- Loading Screen -->
-
-<div id="loader">
-
-    <h2>Preparing Your Surprise ✨</h2>
-
-</div>
-
-<!-- Background -->
-
 <div class="stars"></div>
 <div class="moon"></div>
 
-<!-- Progress Bar -->
+<!-- SECTION 1 -->
 
-<div id="progress"></div>
+<section class="section active">
 
-<!-- Music -->
+<div class="card">
 
-<button id="musicBtn">🎵</button>
+<h1>Happy Birthday ❤️</h1>
 
-<audio id="music" loop>
-    <source src="assets/music/birthday.mp3">
-</audio>
-
-<!-- ================= HERO ================= -->
-
-<section id="hero" class="section">
-
-<h3>Some gifts are wrapped in paper...</h3>
-
-<h1>
-
-This one was wrapped in
-
-<span>Stars ✨</span>
-
-</h1>
+<h2>Geet ✨</h2>
 
 <p>
 
-A little surprise made with lots of love.
+Some gifts are wrapped in paper...
+
+<br><br>
+
+This one was wrapped in stars.
 
 </p>
 
-<button class="scrollBtn" data-target="letter">
+<button class="btn nextBtn">
 
-Begin Journey ❤️
+Begin Journey ✨
 
 </button>
-
-</section>
-
-<!-- ================= LETTER ================= -->
-
-<section id="letter" class="section">
-
-<h2>💌 A Letter For You</h2>
-
-<div class="glass">
-
-<p id="typewriter"></p>
 
 </div>
 
-<button class="scrollBtn"
+</section>
 
-data-target="gallery">
+<!-- SECTION 2 -->
 
-Continue →
+<section class="section">
+
+<div class="card">
+
+<h2>💌 A Letter For You</h2>
+
+<p id="typing"></p>
+
+<button class="btn nextBtn">
+
+Continue ❤️
 
 </button>
 
+</div>
+
 </section>
 
-<!-- ================= GALLERY ================= -->
+<!-- SECTION 3 -->
 
-<section id="gallery" class="section">
+<section class="section">
+
+<div class="card">
 
 <h2>📸 Beautiful Memories</h2>
 
@@ -109,77 +90,161 @@ Continue →
 
 </div>
 
-<button class="scrollBtn"
+<p>
 
-data-target="wish">
+Every picture tells another beautiful story.
+
+</p>
+
+<button class="btn nextBtn">
+
+Next ✨
+
+</button>
+
+</div>
+
+</section>
+
+<!-- SECTION 4 -->
+
+<section class="section">
+
+<div class="card">
+
+<h2>❤️ Things I Love About You</h2>
+
+<p>
+
+😊 Your beautiful smile
+
+<br><br>
+
+🌸 Your kind heart
+
+<br><br>
+
+😂 Your funny moments
+
+<br><br>
+
+✨ Simply being YOU
+
+</p>
+
+<button class="btn nextBtn">
+
+Continue 💖
+
+</button>
+
+</div>
+
+</section>
+
+<!-- SECTION 5 -->
+
+<section class="section">
+
+<div class="card">
+
+<h2>🎵 A Little Surprise</h2>
+
+<p>
+
+Some feelings are better heard than read.
+
+</p>
+
+<audio id="music">
+
+<source src="assets/music/birthday.mp3">
+
+</audio>
+
+<button class="btn" id="playMusic">
+
+▶ Play Voice Message
+
+</button>
+
+<br><br>
+
+<button class="btn nextBtn">
 
 Next ❤️
 
 </button>
 
+</div>
+
 </section>
 
-<!-- ================= WISH ================= -->
+<!-- SECTION 6 -->
 
-<section id="wish" class="section">
+<section class="section">
 
-<h2>❤️ My Birthday Wish</h2>
+<div class="card">
 
-<div class="glass">
+<h2>❤️ Birthday Wishes</h2>
 
 <p>
 
 May your smile never fade.
 
+<br><br>
+
 May every dream come true.
 
-Stay kind.
+<br><br>
 
-Stay happy.
+May happiness always find you.
 
-Stay strong.
+<br><br>
 
-No matter how old we become,
+You'll always be my little sister.
 
-you'll always be my little sister.
+<br><br>
 
-Happy Birthday ❤️
+Happy Birthday Geet ❤️
 
 </p>
 
-</div>
-
-<button class="scrollBtn"
-
-data-target="end">
+<button class="btn nextBtn">
 
 One Last Surprise ✨
 
 </button>
 
+</div>
+
 </section>
 
-<!-- ================= END ================= -->
+<!-- SECTION 7 -->
 
-<section id="end" class="section">
+<section class="section">
 
-<h1>
+<div class="card finalCard">
 
-🎉 Happy Birthday 🎉
+<h1>🎉 Happy Birthday 🎉</h1>
 
-</h1>
-
-<h2>
-
-My Lovely Sister ❤️
-
-</h2>
+<h2>GEET ❤️</h2>
 
 <p>
 
-Thank you for taking this little journey.
+Keep Smiling.
 
-I hope today becomes your happiest memory.
+<br>
+
+Keep Dreaming.
+
+<br>
+
+Keep Shining.
+
+<br><br>
+
+You deserve all the happiness in the world.
 
 </p>
 
@@ -189,12 +254,11 @@ Made with ❤️ by Minnu
 
 </h3>
 
-<div id="confetti"></div>
+</div>
 
 </section>
 
 <script src="script.js"></script>
 
 </body>
-
 </html>
