@@ -1081,3 +1081,80 @@ transform:translateY(-130vh);
 }
 
 }
+
+.controls{
+
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:12px;
+
+margin-top:25px;
+
+}
+
+.controls button{
+
+padding:12px 18px;
+
+border:none;
+
+border-radius:30px;
+
+cursor:pointer;
+
+font-size:16px;
+
+background:#ff4fa0;
+
+color:white;
+
+}
+
+.controls button:disabled{
+
+opacity:.5;
+
+}
+
+#statusText{
+
+margin-top:20px;
+
+font-size:20px;
+
+}
+
+#decorations{
+
+margin-top:25px;
+
+font-size:34px;
+
+min-height:50px;
+
+}
+
+.deco{
+
+margin:0 6px;
+
+animation:pop .4s ease;
+
+}
+
+@keyframes pop{
+
+0%{
+
+transform:scale(0);
+
+}
+
+100%{
+
+transform:scale(1);
+
+}
+
+   }
