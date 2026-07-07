@@ -43,7 +43,11 @@ nextButtons.forEach(btn => {
    TYPEWRITER
 ========================== */
 
-const letter = `Dear Geet,
+const letter = `Dear Geet,6-7 6-7 hehe happy birthday to you geet,
+
+nenu neeku chaala vishyallo sorry cheppali andulokati nenu late ayipoyanu but naa intention neeku oka memorable ga wish cheyyalanade ,
+
+i hope you understood me,
 
 Today is not just another day...
 
@@ -59,7 +63,7 @@ No matter how old we grow,
 
 you'll always be my little sister.
 
-Happy Birthday ❤️
+Once again Happy Birthday to you geet❤️
 
 — Minnu`;
 
