@@ -88,16 +88,15 @@ z-index:-2;
 /* =====================================
    SECTION
 ===================================== */
-
 .section{
 
 display:none;
 
 width:100%;
 
-height:100dvh;
+min-height:100dvh;
 
-padding:25px;
+padding:40px 20px;
 
 justify-content:center;
 
@@ -105,8 +104,9 @@ align-items:center;
 
 animation:fade .9s;
 
-}
+overflow-y:auto;
 
+   }
 .section.active{
 
 display:flex;
